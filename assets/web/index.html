@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AWS Entity Resolution Workshop</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script src="index.js"></script>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#"><h1>AWS Entity Resolution Workshop</h1></a>
+ 
+    </nav>
+
+
+<div  id="alert" style="display:none;" class="alert alert-success">
+  <strong>Success!</strong> Action Completed successfully.
+</div>
+<div class="accordion accordion-flush" id="accordionFlushExample">
+
+    <div class="accordion-item">
+      <form  class="step1-validation" novalidate>
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+         <h4>Step 1: Amazon API Gateway Endpoint Configuration</h4> 
+        </button>
+      </h2>
+      <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body">
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Amazon API Gateway Endpoint</label>
+                <input type="text" class="form-control" id="amazonapigatewayendpoint" placeholder="https://...." required>
+                <br>
+             
+                <button type="submit" class="btn btn-primary">Save Endpoint</button> 
+            </div>
+        </div>
+      </div>
+    </form>
+    </div>
+   
+    <div class="accordion-item">
+      <form  class="step2-validation" novalidate>
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+            <h4>Step 2: User Interactions</h4> 
+        </button>
+      </h2>
+      <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body">
+          <select required class="form-select" id="interactionSelect" style="width: 300px;" aria-label="Default select example">
+            <option value="view_product">View Product</option>
+            <option value="add_to_cart">Add To Cart</option>
+            <option value="register">Register</option>
+            <option value="sign_in">Sign In</option>
+            <option value="place_order">Place Order</option>
+          </select>
+          <br>
+          <div id="interactionContainer">
+
+          </div>
+          <br>
+          <button type="submit" class="btn btn-primary">Send User Interaction</button> 
+        </div>
+        </form>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+            <h4>Step 3: Retrieve User Profile</h4> 
+        </button>
+      </h2>
+      <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body"> <button type="button" id="btnGetProfilebyfpCookie" class="btn btn-primary">Get User Profile Using 1st Party Cookie</button> <br> <br> <h4>Or</h4>   
+          <form  class="step3-validation" novalidate>
+          <input type="text" style="width: 500px;" class="form-control" id="userEmail" placeholder="User Email" required>
+          <br>
+          <button type="submit" class="btn btn-primary">Get User Profile Using Email Address</button> </div>
+          </form>
+      </div>
+    </div>
+  </div>
+
+   <!-- Modal -->
+   <div   class="modal fade" id="myModal" role="dialog">
+    <div  class="modal-dialog modal-xl" >
+    
+      <!-- Modal content-->
+      <div class="modal-content" >
+        <div class="modal-header">
+         
+          <h4 class="modal-title">Unified Profile</h4>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm">
+                <img style="height:200px" src="https://static.vecteezy.com/system/resources/previews/005/544/718/non_2x/profile-icon-design-free-vector.jpg"></img>
+              </div>
+              <div class="col-sm">
+                <h5>1st Party Identifiers:</h5>
+                <ul id="identifiersList" class="list-group">
+                 
+                </ul>
+              </div>
+            </div>
+            <br>
+            <h5>Linked Events:</h5>
+            <div class="row">
+              <div class="col-sm">
+              <table id="eventsTable" class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Event ID</th>
+                    <th scope="col">Event Name</th>
+                    <th scope="col">Match ID</th>
+                    <th scope="col">First Party Cookie</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Product ID(s)</th>
+                    <th scope="col">Order Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                
+                </tbody>
+              </table>
+              </div>
+            </div>
+          </div>
+       
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+</body>
+</html>
