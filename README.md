@@ -123,6 +123,7 @@ See [CONTRIBUTING](CONTRIBUTING.md#security-issue-notifications) for more inform
 ## Authors and acknowledgment
 
 - Ghandi Nader
+- Amit Deol
 
 ## License
 
